@@ -5,6 +5,7 @@ import WindowNav from "../window";
 
 
 import Map0 from "../../assets/map1.png";
+import Map1 from "../../assets/touchingNoses.png";
 
 import Silence from "../stillness/silence";
 import Breathe from "../stillness/breathe";
@@ -48,7 +49,7 @@ export class DataMap extends React.Component {
     }
 
     peel() {
-        this.setState({veil: false});
+        this.setState({veil: !this.state.veil});
     }
 
     render() {
@@ -80,6 +81,8 @@ export class DataMap extends React.Component {
                     </Memory>
                 </MagnifyingGlass>
                 <History src={Map0}></History>
+                <History src={Map1}></History>
+
             </Window>
         )
     }

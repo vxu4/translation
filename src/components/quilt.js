@@ -49,6 +49,7 @@ const Patterning = styled.div`
   align-content: center;
   grid-template-rows: 6vh 25vw 25vw 6vh 500px;
   background-color: ${props => props.veil ? colors.sunLight1 : colors.clearVeil};
+  position: fixed;
 `;
 
 const Fray = styled.h1`
@@ -158,7 +159,14 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                            windowNav={this.navToWindow}>
+                        windowNav={this.navToWindow}
+                        zoom1={this.zoom1}
+                        zoom2={this.zoom2}
+                        zoom3={this.zoom3}
+                        zoom4={this.zoom4}
+                        zoom5={this.zoom5}
+                        zoom6={this.zoom6}
+                        zoom7={this.zoom7}>
                     </LawnMowing> : null
                 }
                 {
@@ -219,6 +227,10 @@ class Quilt extends React.Component {
                             overflow: "hidden",  
                             left: "0px"}}
                         zoom2={this.zoom2}
+                        zoom1={this.zoom1}
+                        zoom0={this.zoom0}
+                        zoom5={this.zoom5}
+                        zoom6={this.zoom6}
                         windowNav={this.navToWindow}>
                     </HongCun> : null
                 }
@@ -235,6 +247,7 @@ class Quilt extends React.Component {
                         zoom1={this.zoom1}
                         zoom4={this.zoom4}
                         zoom6={this.zoom6}
+                        zoom3={this.zoom3}
                         windowNav={this.navToWindow}>
                     </Embodiment> : null
                 }
@@ -267,6 +280,13 @@ class Quilt extends React.Component {
                             top: "0px",  
                             left: "0px"}}
                         src={BodyArmourSketch}
+                        zoom0={this.zoom0}
+                        zoom1={this.zoom1}
+                        zoom2={this.zoom2}
+                        zoom3={this.zoom3}
+                        zoom4={this.zoom4}
+                        zoom5={this.zoom5}
+                        zoom6={this.zoom6}
                         windowNav={this.navToWindow}>
                     </BodyArmour> : null
                 }

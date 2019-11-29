@@ -54,7 +54,7 @@ export class HuskLamp extends React.Component {
     }
 
     peel() {
-        this.setState({veil: false});
+        this.setState({veil: !this.state.veil});
     }
 
     render() {
