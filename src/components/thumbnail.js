@@ -6,9 +6,9 @@ import help from '../assets/lawnmowing.svg';
 
 
 const Window = styled.div`
-    width: 22vw;
-    height: 22vw;
-    margin: 1vw;
+    width: 25vw;
+    height: 25vw;
+    // margin: 1vw;
     background: url(${props => props.src});
 
     :hover {

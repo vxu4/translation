@@ -1,22 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import Frame from "./thumbnail";
-import LawnMowing from "./lawnmowing";
-import BurlapHistory from "./burlapHistory";
-import DataMappings from "./dataMappings";
-import FuDao from "./fuDao";
-import Embodiment from "./embodiment";
-import HongCun from "./hongCun";
-import HuskLamp from "./huskLamp";
 
-import LawnSrc from "../assets/lawnmowing.svg";
-import BurlapSrc from "../assets/burlap.svg";
-import MapSrc from "../assets/dataMappings.svg";
-import HongcunSrc from "../assets/hongcun.svg";
-import EmbodimentSrc from "../assets/embodiment.svg";
-import FuSrc from "../assets/fu.svg";
-import BodyArmour from "../assets/bodyArmour.svg";
-import PineconeSrc from "../assets/pinecone.svg";
+import colors from "./styles/colors";
+import Frame from "./thumbnail";
+import LawnMowing from "./stories/lawnmowing";
+import DataMappings from "./stories/dataMappings";
+import FuDao from "./stories/fuDao";
+import Embodiment from "./stories/embodiment";
+import HongCun from "./stories/hongCun";
+import HuskLamp from "./stories/huskLamp";
+import BodyArmour from "./stories/bodyArmour";
+import BurlapHistory from "./stories/burlapHistory";
+
+
+import LawnSrc from "../assets/lawnCover_2.svg";
+import BurlapSrc from "../assets/burlapCover_1.svg";
+import MapSrc from "../assets/dataCover_1.svg";
+import HongcunSrc from "../assets/hongcunCover_1.svg";
+import EmbodimentSrc from "../assets/embodimentCover_1.svg";
+import FuSrc from "../assets/fuCover_1.svg";
+import BodyArmourSrc from "../assets/quiltCover_1.svg";
+import PineconeSrc from "../assets/conversationsCover_2.svg";
 
 import BurlapFamily from "../assets/burlapFamily.png";
 import MapStories from "../assets/map1.png";
@@ -24,25 +28,35 @@ import FuStory from "../assets/fuDao.png";
 import HuskLamp0 from "../assets/huskLamp2.jpg";
 import HongCunPiece from "../assets/HongCunTri.jpg";
 import Embodiments from "../assets/embodimentsClose1.jpg";
+import BodyArmourSketch from "../assets/LaceFull.svg";
+import QuiltWIP from "../assets/quiltWIP.svg";
 
 
-import frame1_1 from "../assets/1_1.svg";
-import frame1_2 from "../assets/1_2.svg";
-import frame1_3 from "../assets/1_3.svg";
-import frame1_4 from "../assets/1_4.svg";
-import frame2_1 from "../assets/2_1.svg";
-import frame2_2 from "../assets/2_2.svg";
-import frame2_3 from "../assets/2_3.svg";
-import frame2_4 from "../assets/2_4.svg";
+import frame1_1 from "../assets/1_1_frame2.svg";
+import frame1_2 from "../assets/1_2_frame2.svg";
+import frame1_3 from "../assets/1_3_frame2.svg";
+import frame1_4 from "../assets/1_4_frame2.svg";
+import frame2_1 from "../assets/2_1_frame2.svg";
+import frame2_2 from "../assets/2_2_frame2.svg";
+import frame2_3 from "../assets/2_3_frame2.svg";
+import frame2_4 from "../assets/2_4_frame2.svg";
 
 
-const Fray = styled.div`
+const Patterning = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
   justify-content: center;
   align-content: center;
-  grid-template-rows: auto auto 500px;
-  background-color: rgba(254, 214, 175, 0.6);
+  grid-template-rows: 6vh 25vw 25vw 6vh 500px;
+  background-color: ${props => props.veil ? colors.sunLight1 : colors.clearVeil};
+`;
+
+const Fray = styled.h1`
+    color: ${colors.red1};
+    background-color: ${colors.sun1};
+    margin: 0px;
+    font-size: 19px;
+    font-family: Georgia, sans-serif;
 `;
 
 const quilt = [
@@ -53,7 +67,7 @@ const quilt = [
   {frame: frame2_1, cover: HongcunSrc},
   {frame: frame2_2, cover: EmbodimentSrc},
   {frame: frame2_3, cover: FuSrc},
-  {frame: frame2_4, cover: BodyArmour}
+  {frame: frame2_4, cover: BodyArmourSrc}
 ];
 
 const story = [
@@ -80,6 +94,9 @@ class Quilt extends React.Component {
 
     storyteller = (event) => {
         this.setState({story: event.target.id});
+        if (event.target.id == 8)  {
+            this.setState({story: event.target.id});
+        }
     }
 
     quilt = () => {
@@ -90,10 +107,48 @@ class Quilt extends React.Component {
         this.setState({zoom: event.target.id});
     }
 
+    zoom0 = () => {
+        this.setState({story: 0});
+    }
+
+    zoom1 = () => {
+        this.setState({story: 1});
+    }
+
+    zoom2 = () => {
+        this.setState({story: 2});
+    }
+
+    zoom3 = () => {
+        this.setState({story: 3});
+    }
+
+    zoom4 = () => {
+        this.setState({story: 4});
+    }
+
+    zoom5 = () => {
+        this.setState({story: 5});
+    }
+
+    zoom6 = () => {
+        this.setState({story: 6});
+    }
+
+
+    zoom7 = () => {
+        this.setState({story: 7});
+    }
+
+    navToWindow = () => {
+        this.setState({zoom: -1});
+        this.setState({story: -1});
+
+    }
+
     render () {
         return (
             <div>
-            <Fray>
                 {
                     this.state.story == 0 ? 
                     <LawnMowing 
@@ -102,7 +157,8 @@ class Quilt extends React.Component {
                             display: "grid", 
                             position: "absolute", 
                             top: "0px",  
-                            left: "0px"}}>
+                            left: "0px"}}
+                            windowNav={this.navToWindow}>
                     </LawnMowing> : null
                 }
                 {
@@ -114,7 +170,10 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                        src={BurlapFamily}>
+                        zoom0={this.zoom0}
+                        zoom2={this.zoom2}
+                        zoom5={this.zoom5}
+                        windowNav={this.navToWindow}>
                     </BurlapHistory> : null
                 }
                 {
@@ -126,7 +185,13 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                        src={MapStories}>
+                        src={MapStories}
+                        zoom5={this.zoom5}
+                        zoom6={this.zoom6}
+                        zoom3={this.zoom3}
+                        zoom4={this.zoom4}
+                        zoom1={this.zoom1}
+                        windowNav={this.navToWindow}>
                     </DataMappings> : null
                 }
                 {
@@ -138,7 +203,9 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                        src={HuskLamp0}>
+                        zoom2={this.zoom2}
+                        zoom7={this.zoom7}
+                        windowNav={this.navToWindow}>
                     </HuskLamp> : null
                 }
                 {
@@ -147,10 +214,12 @@ class Quilt extends React.Component {
                         style={{
                             zIndex: "-100", 
                             display: "grid", 
-                            position: "absolute", 
-                            top: "0px",  
+                            position: "fixed", 
+                            top: "0px",
+                            overflow: "hidden",  
                             left: "0px"}}
-                        src={HongCunPiece}>
+                        zoom2={this.zoom2}
+                        windowNav={this.navToWindow}>
                     </HongCun> : null
                 }
                 {
@@ -162,7 +231,11 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                        src={Embodiments}>
+                        zoom0={this.zoom0}
+                        zoom1={this.zoom1}
+                        zoom4={this.zoom4}
+                        zoom6={this.zoom6}
+                        windowNav={this.navToWindow}>
                     </Embodiment> : null
                 }
                 {
@@ -174,25 +247,53 @@ class Quilt extends React.Component {
                             position: "absolute", 
                             top: "0px",  
                             left: "0px"}}
-                        src={FuStory}>
+                        src={FuStory}
+                        zoom1={this.zoom1}
+                        zoom2={this.zoom2}
+                        zoom3={this.zoom3}
+                        zoom4={this.zoom4}
+                        zoom5={this.zoom5}
+                        zoom7={this.zoom7}
+                        windowNav={this.navToWindow}>
                     </FuDao> : null
                 }
                 {
-                    this.state.zoom === -1 ?
-                    quilt.map((image, i) => (
-                        <Frame 
-                            key={i} 
-                            window={image.frame} 
-                            id={i} 
-                            hoverSrc={image.cover}
-                            onMouseOver={this.storyteller}
-                            onMouseOut={this.quilt}
-                            onClick={this.zoom}/>
-                    )) : null
+                    this.state.story == 7 ? 
+                    <BodyArmour 
+                        style={{
+                            zIndex: "-100", 
+                            display: "grid", 
+                            position: "absolute", 
+                            top: "0px",  
+                            left: "0px"}}
+                        src={BodyArmourSketch}
+                        windowNav={this.navToWindow}>
+                    </BodyArmour> : null
                 }
-            </Fray>
-            <Fray>
-            </Fray>
+                {
+                     this.state.zoom === -1 ?
+                    <Patterning veil={this.state.story === -1}>
+                        <Fray style={{gridColumn: "1 / 5", gridRow: "1 / 2", padding: "4vh 3vh 0vh", alignSelf: "flex-end"}}>
+                        Translation lacework: rivers growing, branches flowing. Windows of a Quilt: stories living. Recollections for foundation: translation fertilizer.
+                        </Fray> 
+                        {
+                            quilt.map((image, i) => (
+                                <Frame 
+                                    key={i} 
+                                    window={image.frame} 
+                                    id={i} 
+                                    hoverSrc={image.cover}
+                                    onMouseOver={this.storyteller}
+                                    onMouseOut={this.quilt}
+                                    onClick={this.zoom}/>
+                                ))
+                        }
+                        <Fray style={{gridColumn: "1 / 5", gridRow: "4 / 5", padding: "0vh 3vh 4vh"}}>
+                            Fertilizer translation: foundation for recollections. Living stories: quilt of windows. Flowing branches, Growing rivers: lacework translation.
+                        </Fray> 
+                </Patterning> : null
+            }
+
             </div>
         );
     }
